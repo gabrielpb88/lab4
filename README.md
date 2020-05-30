@@ -5,8 +5,11 @@
 
 ## Integrantes
 -Bruno
+
 -Gabriel
+
 -Leticia
+
 -Vanessa
 
 ## Data de Entrega: 09/06/2020
