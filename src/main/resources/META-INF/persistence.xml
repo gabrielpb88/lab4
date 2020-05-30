@@ -11,9 +11,9 @@
             <property name="javax.persistence.jdbc.driver"
                 value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" 
-                value="jdbc:mysql://localhost:3306/avaliacao?serverTimezone=UTC" />
-            <property name="javax.persistence.jdbc.user" value="user" />
-            <property name="javax.persistence.jdbc.password" value="pass123" />
+                value="jdbc:mysql://localhost:3306/lab4_atividade2?serverTimezone=UTC" />
+            <property name="javax.persistence.jdbc.user" value="fatec" />
+            <property name="javax.persistence.jdbc.password" value="fatec" />
             <property name="hibernate.dialect" 
                 value="org.hibernate.dialect.MySQL5Dialect" />
             <property name="hibernate.show_sql" value="true" />
