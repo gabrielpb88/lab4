@@ -10,12 +10,8 @@ import java.util.Set;
 @Entity
 @Table(name = "ped_pedido")
 @Data
-public class Pedido {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ped_id")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name = "ped_id"))
+public class Pedido extends Identificador{
 
     @ManyToOne()
     @JoinColumn(name = "cli_id")

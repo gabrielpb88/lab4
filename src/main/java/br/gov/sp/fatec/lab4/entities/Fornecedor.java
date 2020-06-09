@@ -9,12 +9,9 @@ import java.util.Set;
 @Entity
 @Table(name = "for_fornecedor")
 @Data
-public class Fornecedor {
+@AttributeOverride(name = "id", column = @Column(name = "for_id"))
+public class Fornecedor extends Identificador {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "for_id")
-    private Long id;
     private String nome;
     private String cnpj;
 

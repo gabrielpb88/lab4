@@ -7,12 +7,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ite_item")
 @Data
-public class Item {
+@AttributeOverride(name = "id", column = @Column(name = "ite_id"))
+public class Item extends Identificador{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ite_id")
-    private Long id;
     private String nome;
     private Double preco;
 

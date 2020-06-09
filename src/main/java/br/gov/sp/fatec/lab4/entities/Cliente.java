@@ -8,12 +8,9 @@ import java.util.List;
 @Entity
 @Table(name = "cli_cliente")
 @Data
-public class Cliente {
+@AttributeOverride(name = "id", column = @Column(name = "cli_id"))
+public class Cliente extends Identificador {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cli_id")
-    private Long id;
     private String nome;
     private String cpf;
     private String endereco;
