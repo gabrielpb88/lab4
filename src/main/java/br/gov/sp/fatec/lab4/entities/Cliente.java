@@ -5,16 +5,17 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn
 @Entity
 @Table(name = "cli_cliente")
 @Data
 @AttributeOverride(name = "id", column = @Column(name = "cli_id"))
-public class Cliente extends Identificador {
+public abstract class Cliente extends Identificador {
 
-    private String nome;
-    private String cpf;
-    private String endereco;
+    protected String nome;
+    protected String endereco;
 
     @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
-    private List<Pedido> pedidos;
+    protected List<Pedido> pedidos;
 }
