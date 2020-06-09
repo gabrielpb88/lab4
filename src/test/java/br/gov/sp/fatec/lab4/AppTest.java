@@ -1,4 +1,4 @@
-package br.gov.sp.fatec.atividade2;
+package br.gov.sp.fatec.lab4;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -6,6 +6,10 @@
     <persistence-unit name="atividade2">
   
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>br.gov.sp.fatec.lab4.entities.Cliente</class>
+        <class>br.gov.sp.fatec.lab4.entities.Fornecedor</class>
+        <class>br.gov.sp.fatec.lab4.entities.Item</class>
+        <class>br.gov.sp.fatec.lab4.entities.Pedido</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver"
