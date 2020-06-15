@@ -3,7 +3,9 @@ package br.gov.sp.fatec.lab4.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,5 +18,5 @@ public class Fornecedor extends Identificador {
     private String cnpj;
 
     @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
-    private Set<Item> items;
+    private List<Item> items = new ArrayList<>();
 }

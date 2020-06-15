@@ -3,9 +3,8 @@ package br.gov.sp.fatec.lab4.entities;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "ped_pedido")
@@ -13,7 +12,7 @@ import java.util.Set;
 @AttributeOverride(name = "id", column = @Column(name = "ped_id"))
 public class Pedido extends Identificador{
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "cli_id")
     private Cliente cliente;
 
@@ -22,6 +21,8 @@ public class Pedido extends Identificador{
             joinColumns =
                     { @JoinColumn(name = "ped_id")},
     inverseJoinColumns = { @JoinColumn(name = "ite_id")})
-    private List<Item> items;
+    private List<Item> items = new ArrayList<>();
 
+    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
+    private List<Pagamento> pagamentos = new ArrayList<>();
 }

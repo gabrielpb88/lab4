@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 public class App {
     public static void main(String[] args) {
 
-        //TODO: Faça uso da anotação @Inheritance com duas estratégias diferentes.
         EntityManager manager = PersistenceManager
                 .getInstance().getEntityManager();
 

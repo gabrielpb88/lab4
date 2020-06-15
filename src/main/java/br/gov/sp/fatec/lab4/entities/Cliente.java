@@ -1,8 +1,10 @@
 package br.gov.sp.fatec.lab4.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -17,5 +19,5 @@ public abstract class Cliente extends Identificador {
     protected String endereco;
 
     @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
-    protected List<Pedido> pedidos;
+    protected List<Pedido> pedidos = new ArrayList<>();
 }

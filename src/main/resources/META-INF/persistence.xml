@@ -7,9 +7,14 @@
   
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>br.gov.sp.fatec.lab4.entities.Cliente</class>
+        <class>br.gov.sp.fatec.lab4.entities.ClientePF</class>
+        <class>br.gov.sp.fatec.lab4.entities.ClientePJ</class>
         <class>br.gov.sp.fatec.lab4.entities.Fornecedor</class>
         <class>br.gov.sp.fatec.lab4.entities.Item</class>
         <class>br.gov.sp.fatec.lab4.entities.Pedido</class>
+        <class>br.gov.sp.fatec.lab4.entities.Pagamento</class>
+        <class>br.gov.sp.fatec.lab4.entities.PagamentoCartao</class>
+        <class>br.gov.sp.fatec.lab4.entities.PagamentoCartao</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver"
