@@ -2,17 +2,12 @@ package br.gov.sp.fatec.lab4;
 
 import br.gov.sp.fatec.lab4.dao.PersistenceManager;
 import br.gov.sp.fatec.lab4.entities.*;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import javax.persistence.EntityManager;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PedidoTest {
 
     private EntityManager manager;
@@ -22,9 +17,9 @@ public class PedidoTest {
     private Pedido pedido;
     private Pagamento pagamento;
 
-
-    @BeforeAll
-    public void setUp(){
+    @Test
+    public void testeSalvarPedido()
+    {
         manager = PersistenceManager
                 .getInstance().getEntityManager();
 
@@ -51,11 +46,7 @@ public class PedidoTest {
         manager.persist(fornecedor);
         manager.persist(item);
         manager.getTransaction().commit();
-    }
 
-    @Test
-    public void testeSalvarPedido()
-    {
         pedido.setCliente(cliente);
         pedido.getItems().add(item);
         pedido.getPagamentos().add(pagamento);

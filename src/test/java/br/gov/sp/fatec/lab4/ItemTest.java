@@ -3,33 +3,27 @@ package br.gov.sp.fatec.lab4;
 import br.gov.sp.fatec.lab4.dao.PersistenceManager;
 import br.gov.sp.fatec.lab4.entities.Fornecedor;
 import br.gov.sp.fatec.lab4.entities.Item;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import javax.persistence.EntityManager;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ItemTest {
 
     private EntityManager manager;
     private Item item;
     private Fornecedor fornecedor;
 
-    @BeforeAll
-    public void setUp(){
+    @Test
+    public void testeSalvarItem()
+    {
         manager = PersistenceManager
                 .getInstance().getEntityManager();
         fornecedor = new Fornecedor();
         fornecedor.setCnpj("123");
         fornecedor.setNome("Distribuidora do Vale");
-    }
 
-    @Test
-    public void testeSalvarItem()
-    {
         item = new Item();
         item.setNome("Moto G5");
         item.setPreco(600.00);
