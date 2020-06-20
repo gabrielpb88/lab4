@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name="pag_pagamento_cartao")
-@AttributeOverride(name = "id", column = @Column(name = "pag_id"))
 public class PagamentoCartao extends Pagamento {
 
     private Integer parcelas;
