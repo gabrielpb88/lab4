@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ClienteTest {
@@ -30,7 +31,8 @@ public class ClienteTest {
         manager.persist(clientePF);
         manager.getTransaction().commit();
 
-        assertTrue( true );
+        assertNotNull(clientePF.getId());
+
     }
 
     @Test

@@ -2,6 +2,7 @@ package br.gov.sp.fatec.lab4.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,13 +12,13 @@ import java.util.List;
 @DiscriminatorColumn
 @Entity
 @Table(name = "cli_cliente")
-@Data
+@Data @NoArgsConstructor @AllArgsConstructor
 @AttributeOverride(name = "id", column = @Column(name = "cli_id"))
 public abstract class Cliente extends Identificador {
 
     protected String nome;
     protected String endereco;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     protected List<Pedido> pedidos = new ArrayList<>();
 }
