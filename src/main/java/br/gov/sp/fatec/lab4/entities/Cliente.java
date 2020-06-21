@@ -1,8 +1,9 @@
 package br.gov.sp.fatec.lab4.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,7 +13,10 @@ import java.util.List;
 @DiscriminatorColumn
 @Entity
 @Table(name = "cli_cliente")
-@Data @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @AttributeOverride(name = "id", column = @Column(name = "cli_id"))
 public abstract class Cliente extends Identificador {
 

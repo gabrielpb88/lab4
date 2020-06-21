@@ -1,15 +1,24 @@
 package br.gov.sp.fatec.lab4.entities;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @MappedSuperclass
-@Data
+@Getter
+@Setter
 public abstract class Identificador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
+    protected Long id;
+
+    @Override
+    public String toString() {
+        return "Identificador{" +
+                "id=" + id +
+                '}';
+    }
 }
