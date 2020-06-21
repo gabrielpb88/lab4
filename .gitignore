@@ -1,4 +1,5 @@
 .idea/**
 target/**
 build/**
+.attach*
 atividade2.iml
