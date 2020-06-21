@@ -1,32 +1,32 @@
 package br.gov.sp.fatec.lab4.dao;
 
-import br.gov.sp.fatec.lab4.entities.Cliente;
+import br.gov.sp.fatec.lab4.entities.Item;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Map;
 
-public class ClienteDao {
+public class ItemDao {
 
     private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
 
-    public Cliente findById(Long id){
-        return manager.find(Cliente.class, id);
+    public Item findById(Long id){
+        return manager.find(Item.class, id);
     }
 
-    public List<Cliente> findByAttributes(Map<String, String> atributes){
+    public List<Item> findByAttributes(Map<String, String> atributes){
         if (atributes == null) return null;
 
-        String queryText = "select c from Cliente c where ";
+        String queryText = "select i from Item i where ";
         int size = atributes.size();
         int i = 0;
         for(String s : atributes.keySet()){
-            queryText += "c." + s + " like :" + s;
+            queryText += "i." + s + " like :" + s;
             i++;
             if(i < size) queryText += " and ";
         }
-        TypedQuery<Cliente> typedQuery = manager.createQuery(queryText, Cliente.class);
+        TypedQuery<Item> typedQuery = manager.createQuery(queryText, Item.class);
         for(String s : atributes.keySet()){
             typedQuery.setParameter(s, atributes.get(s));
         }
@@ -34,31 +34,31 @@ public class ClienteDao {
         return typedQuery.getResultList();
     }
 
-    public List<Cliente> findByAttribute(String attribute, String value){
-        String queryText = "select c from Cliente c where c." + attribute + " like " + ":" + attribute;
+    public List<Item> findByAttribute(String attribute, String value){
+        String queryText = "select i from Item i where i." + attribute + " like " + ":" + attribute;
 
-        TypedQuery<Cliente> typedQuery = manager.createQuery(queryText, Cliente.class);
+        TypedQuery<Item> typedQuery = manager.createQuery(queryText, Item.class);
         typedQuery.setParameter(attribute, value);
 
         return typedQuery.getResultList();
     }
 
-    public void save(Cliente cliente) {
+    public void save(Item item) {
         manager.getTransaction().begin();
-        manager.persist(cliente);
+        manager.persist(item);
         manager.getTransaction().commit();
     }
 
-    public void delete(Cliente cliente){
+    public void delete(Item item){
         manager.getTransaction().begin();
-        manager.remove(cliente);
+        manager.remove(item);
         manager.getTransaction().commit();
     }
 
-    public void update(Cliente cliente){
+    public void update(Item item){
         try{
             manager.getTransaction().begin();
-            manager.merge(cliente);
+            manager.merge(item);
             manager.getTransaction().commit();
         } catch (Exception e){
             manager.getTransaction().rollback();

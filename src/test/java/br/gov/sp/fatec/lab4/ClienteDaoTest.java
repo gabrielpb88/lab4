@@ -4,64 +4,99 @@ import br.gov.sp.fatec.lab4.dao.ClienteDao;
 import br.gov.sp.fatec.lab4.entities.Cliente;
 import br.gov.sp.fatec.lab4.entities.ClientePF;
 import br.gov.sp.fatec.lab4.entities.ClientePJ;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ClienteDaoTest {
 
-    private ClienteDao dao = new ClienteDao();
-    private ClientePF clientePF;
-    private ClientePJ clientePJ;
+    private static ClienteDao dao;
+    private static ClientePF clientePF;
+    private static ClientePJ clientePJ;
 
-    @Test
-    public void testeClientePF()
-    {
+    @BeforeAll
+    public static void setUp(){
+        dao = new ClienteDao();
+        clientePJ = new ClientePJ();
         clientePF = new ClientePF();
-        clientePF.setCpf("123");
-        clientePF.setNome("Gabriel");
-        clientePF.setEndereco("Rua A");
-
-        dao.salvar(clientePF);
-        assertNotNull(clientePF.getId());
-
-        clientePF.setNome("Gabriel Pereira");
-        dao.atualizar(clientePF);
-        assertEquals("Gabriel Pereira", clientePF.getNome());
-
-        Cliente cliente = dao.buscar(1L);
-        assertEquals("Rua A", cliente.getEndereco());
-
-        dao.deletar(cliente);
-        Cliente clienteBuscado = dao.buscar(1L);
-        assertNull(clienteBuscado);
     }
 
     @Test
-    public void testeSalvarClientePJ()
+    @Order(1)
+    public void salvandoClientes()
     {
-        clientePJ = new ClientePJ();
-        clientePJ.setCnpj("123456789000101");
-        clientePJ.setNome("Fatec");
-        clientePJ.setEndereco("Fim do mundo");
+        clientePF.setCpf("123");
+        clientePF.setNome("Gabriel Pereira");
+        clientePF.setEndereco("Rua A");
 
-        dao.salvar(clientePJ);
+        clientePJ.setCnpj("123");
+        clientePJ.setNome("Gabriel Pereira Bastos");
+        clientePJ.setEndereco("Rua A");
 
+        dao.save(clientePF);
+        dao.save(clientePJ);
+
+        assertNotNull(clientePF.getId());
         assertNotNull(clientePJ.getId());
 
-        dao.salvar(clientePJ);
-        assertNotNull(clientePJ.getId());
+    }
 
-        clientePJ.setNome("Gabriel Pereira");
-        dao.atualizar(clientePJ);
-        assertEquals("Gabriel Pereira", clientePJ.getNome());
+    @Test
+    @Order(2)
+    public void testandoBuscaPorId(){
+        Cliente clienteBuscado = dao.findById(clientePF.getId());
+        System.out.println(clienteBuscado);
+        assertNotNull(clienteBuscado);
+    }
 
-        Cliente cliente = dao.buscar(clientePJ.getId());
-        assertEquals("Fim do mundo", cliente.getEndereco());
+    @Test
+    @Order(3)
+    public void buscandoPorUmAtributoSemCoringa(){
+        List<Cliente> result = dao.findByAttribute("nome", "abr");
+        assertEquals(0, result.size());
+    }
 
-        dao.deletar(cliente);
-        Cliente clienteBuscado = dao.buscar(cliente.getId());
-        assertNull(clienteBuscado);
+    @Test
+    @Order(3)
+    public void buscandoPorUmAtributoComCoringa(){
+        List<Cliente> result = dao.findByAttribute("nome", "%abr%");
+        assertEquals(2, result.size());
+    }
+
+    @Test
+    @Order(3)
+    public void buscandoPorVariosAtributos(){
+        Map<String, String> map = new HashMap<>();
+        map.put("nome", "%abr%");
+        map.put("endereco", "%a%");
+
+        List<Cliente> result = dao.findByAttributes(map);
+        assertEquals(2, result.size());
+    }
+
+    @Test
+    @Order(4)
+    public void atualizandoCliente(){
+        clientePF.setNome("Gabriel");
+        dao.update(clientePF);
+
+        Cliente clienteBuscado = dao.findById(clientePF.getId());
+
+        assertEquals("Gabriel", clienteBuscado.getNome());
+    }
+
+    @Test
+    @Order(5)
+    public void deletandoCliente(){
+        long id = clientePF.getId();
+        dao.delete(clientePF);
+        Cliente naoEncontrado = dao.findById(id);
+        assertNull(naoEncontrado);
     }
 
 }
