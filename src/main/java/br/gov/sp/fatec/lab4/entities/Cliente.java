@@ -23,6 +23,6 @@ public abstract class Cliente extends Identificador {
     protected String nome;
     protected String endereco;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     protected List<Pedido> pedidos = new ArrayList<>();
 }

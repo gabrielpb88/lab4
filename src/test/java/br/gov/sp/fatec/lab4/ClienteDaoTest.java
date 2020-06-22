@@ -49,8 +49,9 @@ public class ClienteDaoTest {
     @Test
     @Order(2)
     public void testandoBuscaPorId(){
-        Cliente clienteBuscado = dao.findById(clientePF.getId());
-        System.out.println(clienteBuscado);
+        Cliente cli = new ClientePF("123456789");
+        dao.save(cli);
+        Cliente clienteBuscado = dao.findById(cli.getId());
         assertNotNull(clienteBuscado);
     }
 

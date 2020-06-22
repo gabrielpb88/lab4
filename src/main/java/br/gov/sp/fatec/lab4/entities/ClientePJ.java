@@ -20,7 +20,6 @@ public class ClientePJ extends Cliente {
                 "cnpj='" + cnpj + '\'' +
                 ", nome='" + nome + '\'' +
                 ", endereco='" + endereco + '\'' +
-                ", pedidos=" + pedidos +
                 ", id=" + id +
                 '}';
     }

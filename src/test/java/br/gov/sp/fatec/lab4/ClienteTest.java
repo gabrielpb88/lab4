@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import javax.persistence.EntityManager;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ClienteTest {
 
@@ -23,9 +22,9 @@ public class ClienteTest {
                 .getInstance().getEntityManager();
 
         clientePF = new ClientePF();
-        clientePF.setCpf("123");
-        clientePF.setNome("Gabriel");
-        clientePF.setEndereco("Rua A");
+        clientePF.setCpf("283");
+        clientePF.setNome("Maria");
+        clientePF.setEndereco("Rua B");
 
         manager.getTransaction().begin();
         manager.persist(clientePF);
@@ -50,7 +49,7 @@ public class ClienteTest {
         manager.persist(clientePJ);
         manager.getTransaction().commit();
 
-        assertTrue( true );
+        assertNotNull(clientePJ.getId());
     }
 
 }

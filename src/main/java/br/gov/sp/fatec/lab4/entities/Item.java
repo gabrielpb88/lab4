@@ -24,7 +24,6 @@ public class Item extends Identificador {
         return "Item{" +
                 "nome='" + nome + '\'' +
                 ", preco=" + preco +
-                ", fornecedor=" + fornecedor +
                 ", id=" + id +
                 '}';
     }

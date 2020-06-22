@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PagamentoTest {
@@ -29,7 +30,7 @@ public class PagamentoTest {
         manager.persist(pagamentoCartao);
         manager.getTransaction().commit();
 
-        assertTrue( true );
+        assertNotNull(pagamentoCartao.getId());
     }
 
     @Test
@@ -47,7 +48,7 @@ public class PagamentoTest {
         manager.persist(pagamentoDinheiro);
         manager.getTransaction().commit();
 
-        assertTrue( true );
+        assertNotNull(pagamentoDinheiro.getId());
     }
 
 }

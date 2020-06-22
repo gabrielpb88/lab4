@@ -17,7 +17,7 @@ public class Fornecedor extends Identificador {
     private String nome;
     private String cnpj;
 
-    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
     private List<Item> items = new ArrayList<>();
 
     @Override

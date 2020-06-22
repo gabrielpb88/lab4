@@ -24,7 +24,6 @@ public class ClientePF extends Cliente {
                 "cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
                 ", endereco='" + endereco + '\'' +
-                ", pedidos=" + pedidos +
                 ", id=" + id +
                 '}';
     }
