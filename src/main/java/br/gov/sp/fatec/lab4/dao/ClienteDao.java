@@ -10,8 +10,11 @@ import java.util.Map;
 public class ClienteDao {
 
     private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
+        public ClienteDao(EntityManager manager) {
+		this.manager=manager;
+	}
 
-    public Cliente findById(Long id){
+	public Cliente findById(Long id){
         return manager.find(Cliente.class, id);
     }
 
@@ -65,5 +68,15 @@ public class ClienteDao {
             System.out.println("Erro ao atualizar entidade");
         }
     }
+
+	public void salvarSemCommit(Cliente cliente) {
+		if(cliente.getId() == null) {
+            manager.persist(cliente);
+        }
+        else {
+            manager.merge(cliente);
+        }
+		
+	}
 
 }

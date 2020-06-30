@@ -4,15 +4,19 @@ import br.gov.sp.fatec.lab4.dao.ClienteDao;
 import br.gov.sp.fatec.lab4.dao.FornecedorDao;
 import br.gov.sp.fatec.lab4.dao.ItemDao;
 import br.gov.sp.fatec.lab4.dao.PedidoDao;
+import br.gov.sp.fatec.lab4.dao.PersistenceManager;
 import br.gov.sp.fatec.lab4.entities.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PedidoDaoTest {
+    private static EntityManager manager = PersistenceManager.getInstance().getEntityManager();
 
     private static PedidoDao pedidoDao;
     private static ClienteDao clienteDao;
@@ -26,10 +30,10 @@ public class PedidoDaoTest {
 
     @BeforeAll
     public static void setUp(){
-        pedidoDao = new PedidoDao();
-        clienteDao = new ClienteDao();
+        pedidoDao = new PedidoDao(manager);
+        clienteDao = new ClienteDao(manager);
         fornecedorDao = new FornecedorDao();
-        itemDao = new ItemDao();
+        itemDao = new ItemDao(manager);
 
         pedido = new Pedido();
 

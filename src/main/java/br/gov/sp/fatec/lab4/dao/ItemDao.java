@@ -10,8 +10,12 @@ import java.util.Map;
 public class ItemDao {
 
     private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
+    
+    public ItemDao(EntityManager manager) {
+		this.manager=manager;
+	}
 
-    public Item findById(Long id){
+	public Item findById(Long id){
         return manager.find(Item.class, id);
     }
 
@@ -65,5 +69,15 @@ public class ItemDao {
             System.out.println("Erro ao atualizar entidade");
         }
     }
+
+	public void salvarSemCommit(Item item) {
+		if(item.getId() == null) {
+            manager.persist(item);
+        }
+        else {
+            manager.merge(item);
+        }
+		
+	}
 
 }

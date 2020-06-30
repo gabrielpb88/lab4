@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.lab4;
 
 import br.gov.sp.fatec.lab4.dao.ClienteDao;
+import br.gov.sp.fatec.lab4.dao.PersistenceManager;
 import br.gov.sp.fatec.lab4.entities.Cliente;
 import br.gov.sp.fatec.lab4.entities.ClientePF;
 import br.gov.sp.fatec.lab4.entities.ClientePJ;
@@ -10,10 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ClienteDaoTest {
+    private static EntityManager manager = PersistenceManager.getInstance().getEntityManager();
 
     private static ClienteDao dao;
     private static ClientePF clientePF;
@@ -21,7 +25,7 @@ public class ClienteDaoTest {
 
     @BeforeAll
     public static void setUp(){
-        dao = new ClienteDao();
+        dao = new ClienteDao(manager);
         clientePJ = new ClientePJ();
         clientePF = new ClientePF();
     }
