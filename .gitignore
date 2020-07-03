@@ -2,5 +2,5 @@
 target/**
 build/**
 .attach*
-atividade2.iml
+*.iml
 /target/

@@ -28,7 +28,7 @@ public class PedidoDao {
     }
     public void salvar(Pedido pedido) throws RollbackException {
         try {
-			//sempre irá gerar um novo pedido
+			//sempre ira gerar um novo pedido
 			pedido.setId(null);
             manager.getTransaction().begin();
             salvarSemCommit(pedido);
