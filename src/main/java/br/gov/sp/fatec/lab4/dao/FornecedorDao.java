@@ -9,13 +9,21 @@ import java.util.Map;
 
 public class FornecedorDao {
 
-    private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
+    private EntityManager manager;
 
-    public Fornecedor findById(Long id){
+    public FornecedorDao() {
+        this.manager = PersistenceManager.getInstance().getEntityManager();
+    }
+
+    public FornecedorDao(EntityManager manager) {
+        this.manager = PersistenceManager.getInstance().getEntityManager();
+    }
+
+    public Fornecedor findById(Long id) {
         return manager.find(Fornecedor.class, id);
     }
 
-    public List<Fornecedor> findByAttributes(Map<String, String> atributes){
+    public List<Fornecedor> findByAttributes(Map<String, String> atributes) {
         if (atributes == null) return null;
 
         String queryText = "select f from Fornecedor f where ";

@@ -12,13 +12,14 @@ import java.util.Map;
 
 public class PedidoDao {
 
-    //private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
     private EntityManager manager;
     private ItemDao itemDao;
     private ClienteDao clienteDao;
-    public Pedido findById(Long id) {
-        return manager.find(Pedido.class, id);
+
+    public PedidoDao() {
+        this.manager = PersistenceManager.getInstance().getEntityManager();
     }
+
     public PedidoDao(EntityManager manager) {
         this.manager = manager;
         // Usamos o mesmo manager nos outros DAOs para manter
@@ -26,10 +27,11 @@ public class PedidoDao {
         itemDao = new ItemDao(manager);
         clienteDao = new ClienteDao(manager);
     }
+
     public void salvar(Pedido pedido) throws RollbackException {
         try {
-			//sempre irá gerar um novo pedido
-			pedido.setId(null);
+            //sempre ira gerar um novo pedido
+            pedido.setId(null);
             manager.getTransaction().begin();
             salvarSemCommit(pedido);
             manager.getTransaction().commit();
@@ -39,22 +41,27 @@ public class PedidoDao {
             throw e;
         }
     }
-    private void salvarSemCommit(Pedido pedido) {
-    	if(pedido.getCliente().getId() == null) {
-            clienteDao.salvarSemCommit(pedido.getCliente());
-	    }
-		
-		for(Item item: pedido.getItems()){
-			if(item.getId()==null){
-				itemDao.salvarSemCommit(item);
-			}
-		}
-		//persiste o dado 
-		manager.persist(pedido);
-		
-	}
 
-	public List<Pedido> findPedidosComItemDoCliente(Cliente cliente, String item) {
+    private void salvarSemCommit(Pedido pedido) {
+        if (pedido.getCliente().getId() == null) {
+            clienteDao.salvarSemCommit(pedido.getCliente());
+        }
+
+        for (Item item : pedido.getItems()) {
+            if (item.getId() == null) {
+                itemDao.salvarSemCommit(item);
+            }
+        }
+        //persiste o dado
+        manager.persist(pedido);
+
+    }
+
+    public Pedido findById(Long id) {
+        return manager.find(Pedido.class, id);
+    }
+
+    public List<Pedido> findPedidosComItemDoCliente(Cliente cliente, String item) {
         if (cliente == null || item == null || item.trim().length() == 0) return null;
 
         String queryText = "select p from Pedido p "

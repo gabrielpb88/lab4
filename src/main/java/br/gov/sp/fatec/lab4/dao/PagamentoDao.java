@@ -9,13 +9,21 @@ import java.util.Map;
 
 public class PagamentoDao {
 
-    private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
+    private EntityManager manager;
 
-    public Pagamento findById(Long id){
+    public PagamentoDao() {
+        this.manager = PersistenceManager.getInstance().getEntityManager();
+    }
+
+    public PagamentoDao(EntityManager manager) {
+        this.manager = PersistenceManager.getInstance().getEntityManager();
+    }
+
+    public Pagamento findById(Long id) {
         return manager.find(Pagamento.class, id);
     }
 
-    public List<Pagamento> findByAttributes(Map<String, String> atributes){
+    public List<Pagamento> findByAttributes(Map<String, String> atributes) {
         if (atributes == null) return null;
 
         String queryText = "select p from Pagamento p where ";
