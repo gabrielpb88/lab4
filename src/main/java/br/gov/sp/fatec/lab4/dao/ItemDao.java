@@ -9,17 +9,21 @@ import java.util.Map;
 
 public class ItemDao {
 
-    private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
-    
-    public ItemDao(EntityManager manager) {
-		this.manager=manager;
-	}
+    private EntityManager manager;
 
-	public Item findById(Long id){
+    public ItemDao() {
+        this.manager = PersistenceManager.getInstance().getEntityManager();
+    }
+
+    public ItemDao(EntityManager manager) {
+        this.manager = manager;
+    }
+
+    public Item findById(Long id) {
         return manager.find(Item.class, id);
     }
 
-    public List<Item> findByAttributes(Map<String, String> atributes){
+    public List<Item> findByAttributes(Map<String, String> atributes) {
         if (atributes == null) return null;
 
         String queryText = "select i from Item i where ";

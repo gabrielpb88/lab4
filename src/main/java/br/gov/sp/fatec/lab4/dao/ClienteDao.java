@@ -9,16 +9,21 @@ import java.util.Map;
 
 public class ClienteDao {
 
-    private EntityManager manager = PersistenceManager.getInstance().getEntityManager();
-        public ClienteDao(EntityManager manager) {
-		this.manager=manager;
-	}
+    private EntityManager manager;
 
-	public Cliente findById(Long id){
+    public ClienteDao() {
+        this.manager = PersistenceManager.getInstance().getEntityManager();
+    }
+
+    public ClienteDao(EntityManager manager) {
+        this.manager = manager;
+    }
+
+    public Cliente findById(Long id) {
         return manager.find(Cliente.class, id);
     }
 
-    public List<Cliente> findByAttributes(Map<String, String> atributes){
+    public List<Cliente> findByAttributes(Map<String, String> atributes) {
         if (atributes == null) return null;
 
         String queryText = "select c from Cliente c where ";
@@ -59,24 +64,23 @@ public class ClienteDao {
     }
 
     public void update(Cliente cliente){
-        try{
+        try {
             manager.getTransaction().begin();
             manager.merge(cliente);
             manager.getTransaction().commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             manager.getTransaction().rollback();
             System.out.println("Erro ao atualizar entidade");
         }
     }
 
-	public void salvarSemCommit(Cliente cliente) {
-		if(cliente.getId() == null) {
+    public void salvarSemCommit(Cliente cliente) {
+        if (cliente.getId() == null) {
             manager.persist(cliente);
-        }
-        else {
+        } else {
             manager.merge(cliente);
         }
-		
-	}
+
+    }
 
 }
