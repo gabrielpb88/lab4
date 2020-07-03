@@ -1,8 +1,8 @@
 package br.gov.sp.fatec.lab4.dao;
 
-import br.gov.sp.fatec.lab4.entities.Cliente;
-import br.gov.sp.fatec.lab4.entities.Item;
-import br.gov.sp.fatec.lab4.entities.Pedido;
+import br.gov.sp.fatec.lab4.entitie.Cliente;
+import br.gov.sp.fatec.lab4.entitie.Item;
+import br.gov.sp.fatec.lab4.entitie.Pedido;
 
 import javax.persistence.EntityManager;
 import javax.persistence.RollbackException;

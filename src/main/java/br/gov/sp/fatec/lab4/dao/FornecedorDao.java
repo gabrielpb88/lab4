@@ -1,6 +1,6 @@
 package br.gov.sp.fatec.lab4.dao;
 
-import br.gov.sp.fatec.lab4.entities.Fornecedor;
+import br.gov.sp.fatec.lab4.entitie.Fornecedor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

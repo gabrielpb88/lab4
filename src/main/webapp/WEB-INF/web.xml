@@ -5,4 +5,13 @@
 <web-app>
   <display-name>Atividade 4</display-name>
 
+  <servlet>
+    <servlet-name>mainController</servlet-name>
+    <servlet-class>br.gov.sp.fatec.lab4.controller.MainController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>mainController</servlet-name>
+    <url-pattern>/status</url-pattern>
+  </servlet-mapping>
 </web-app>
