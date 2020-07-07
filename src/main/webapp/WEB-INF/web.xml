@@ -5,4 +5,14 @@
 <web-app>
   <display-name>Atividade 4</display-name>
 
+  <servlet>
+    <servlet-name>ClienteController</servlet-name>
+    <servlet-class>br.gov.sp.fatec.lab4.controller.ClienteController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ClienteController</servlet-name>
+    <url-pattern>/cliente</url-pattern>
+  </servlet-mapping>
+
 </web-app>
