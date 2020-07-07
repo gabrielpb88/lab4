@@ -6,12 +6,13 @@
   <display-name>Atividade 4</display-name>
 
   <servlet>
-    <servlet-name>mainController</servlet-name>
-    <servlet-class>br.gov.sp.fatec.lab4.controller.MainController</servlet-class>
+    <servlet-name>ClienteController</servlet-name>
+    <servlet-class>br.gov.sp.fatec.lab4.controller.ClienteController</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>mainController</servlet-name>
-    <url-pattern>/status</url-pattern>
+    <servlet-name>ClienteController</servlet-name>
+    <url-pattern>/cliente</url-pattern>
   </servlet-mapping>
+
 </web-app>
