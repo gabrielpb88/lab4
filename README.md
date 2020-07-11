@@ -16,7 +16,8 @@
 ### Resolução
  - Requisito 1: Criado rota GET ```/cliente?id=``` para busca de cliente por ID. Este endpoint retorna 200 ou 404 dependendo do item ter sido encontrado ou não.
  
- - Requisito 2: Criado rota POST ```/cliente``` para Criação de recurso. É retornado um Header Location com o endereço do recurso.
+ - Requisito 2: Criado rota POST ```/cliente?tipo=?``` para Criação de recurso. É retornado um Header Location com o endereço do recurso.
+Variável 'tipo' pode ser: ```pf``` ou ```pj```
 
  - Requisito 3: Criado rota PUT  ```/cliente?id=``` para atualizar um objeto no banco de dados. Retorna 204 se o item foi atualizado, ou 500 caso não consiga atualizar, ou o item não foi encontrado.
 

@@ -4,6 +4,7 @@ import br.gov.sp.fatec.lab4.dao.ClienteDao;
 import br.gov.sp.fatec.lab4.dao.PersistenceManager;
 import br.gov.sp.fatec.lab4.entitie.Cliente;
 import br.gov.sp.fatec.lab4.entitie.ClientePF;
+import br.gov.sp.fatec.lab4.entitie.ClientePJ;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.persistence.EntityManager;
@@ -45,8 +46,21 @@ public class ClienteController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientePF cliente = mapper.readValue(req.getReader(), ClientePF.class);
-        try{
+        Cliente cliente;
+        String tipoCliente = req.getParameter("tipo").toLowerCase();
+
+        switch (tipoCliente){
+            case "pf":
+                cliente = mapper.readValue(req.getReader(), ClientePF.class);
+                break;
+            case "pj":
+                cliente = mapper.readValue(req.getReader(), ClientePJ.class);
+                break;
+            default:
+                cliente = null;
+        }
+
+        try {
             dao.save(cliente);
             String json = mapper.writeValueAsString(cliente);
             resp.setStatus(HttpServletResponse.SC_CREATED);
@@ -58,7 +72,7 @@ public class ClienteController extends HttpServlet {
             resp.getWriter().print(json);
             resp.getWriter().flush();
 
-        }catch (Exception e){
+        } catch (Exception e){
             resp.setStatus(500);
         }
     }
