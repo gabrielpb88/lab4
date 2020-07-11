@@ -19,7 +19,7 @@
  - Requisito 2: Criado rota POST ```/cliente?tipo=?``` para Criação de recurso. É retornado um Header Location com o endereço do recurso.
 Variável 'tipo' pode ser: ```pf``` ou ```pj```
 
- - Requisito 3: Criado rota PUT  ```/cliente?id=``` para atualizar um objeto no banco de dados. Retorna 204 se o item foi atualizado, ou 500 caso não consiga atualizar, ou o item não foi encontrado.
+ - Requisito 3: Criado rota PUT  ```/cliente``` para atualizar um objeto no banco de dados. Retorna 204 se o item foi atualizado, ou 500 caso não consiga atualizar, ou o item não foi encontrado.
 
  - Requisito 4: Criado rota DELETE ```/cliente?id=``` para deletar um recurso. É retornado 204 caso o item seja deletado, ou 404 caso o item não seja encontrado.
  
