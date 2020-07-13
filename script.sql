@@ -68,3 +68,23 @@ CREATE TABLE pag_pagamento_dinheiro(
     desconto DOUBLE,
     CONSTRAINT pk_pag_pagamento_dinheiro PRIMARY KEY(pag_id)
 );
+
+CREATE TABLE usr_usuario(
+    usuario VARCHAR(255) NOT NULL PRIMARY KEY,
+    senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE roles(
+    role_name VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_roles PRIMARY KEY(nome)
+);
+
+CREATE TABLE usr_has_roles(
+    role_name VARCHAR(255) NOT NULL,
+    usuario VARCHAR(255) NOT NULL,
+    CONSTRAINT fk_usuario FOREIGN KEY (usuario) REFERENCES
+    usr_usuario(usuario),
+    CONSTRAINT fk_role FOREIGN KEY (role_name) REFERENCES
+    roles(role_name),
+    CONSTRAINT pk_roles PRIMARY KEY(role_name, usuario)
+);

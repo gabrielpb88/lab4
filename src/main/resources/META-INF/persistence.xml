@@ -6,13 +6,13 @@
     <persistence-unit name="atividade2">
   
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>br.gov.sp.fatec.lab4.entities.Cliente</class>
-        <class>br.gov.sp.fatec.lab4.entities.ClientePF</class>
-        <class>br.gov.sp.fatec.lab4.entities.ClientePJ</class>
-        <class>br.gov.sp.fatec.lab4.entities.Fornecedor</class>
-        <class>br.gov.sp.fatec.lab4.entities.Item</class>
-        <class>br.gov.sp.fatec.lab4.entities.Pedido</class>
-        <class>br.gov.sp.fatec.lab4.entities.Pagamento</class>
+        <class>br.gov.sp.fatec.lab4.entitie.Cliente</class>
+        <class>br.gov.sp.fatec.lab4.entitie.ClientePF</class>
+        <class>br.gov.sp.fatec.lab4.entitie.ClientePJ</class>
+        <class>br.gov.sp.fatec.lab4.entitie.Fornecedor</class>
+        <class>br.gov.sp.fatec.lab4.entitie.Item</class>
+        <class>br.gov.sp.fatec.lab4.entitie.Pedido</class>
+        <class>br.gov.sp.fatec.lab4.entitie.Pagamento</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver"
@@ -25,7 +25,7 @@
                 value="org.hibernate.dialect.MySQL5Dialect" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="hibernate.hbm2ddl.auto" value="validate" />
         </properties>
     </persistence-unit>
 </persistence>

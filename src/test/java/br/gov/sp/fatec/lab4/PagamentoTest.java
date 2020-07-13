@@ -1,8 +1,8 @@
 package br.gov.sp.fatec.lab4;
 
 import br.gov.sp.fatec.lab4.dao.PersistenceManager;
-import br.gov.sp.fatec.lab4.entities.PagamentoCartao;
-import br.gov.sp.fatec.lab4.entities.PagamentoDinheiro;
+import br.gov.sp.fatec.lab4.entitie.PagamentoCartao;
+import br.gov.sp.fatec.lab4.entitie.PagamentoDinheiro;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;

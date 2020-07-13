@@ -1,4 +1,4 @@
-package br.gov.sp.fatec.lab4.entities;
+package br.gov.sp.fatec.lab4.entitie;
 
 import lombok.Getter;
 import lombok.Setter;

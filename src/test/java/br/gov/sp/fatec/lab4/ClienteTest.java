@@ -1,8 +1,8 @@
 package br.gov.sp.fatec.lab4;
 
 import br.gov.sp.fatec.lab4.dao.PersistenceManager;
-import br.gov.sp.fatec.lab4.entities.ClientePF;
-import br.gov.sp.fatec.lab4.entities.ClientePJ;
+import br.gov.sp.fatec.lab4.entitie.ClientePF;
+import br.gov.sp.fatec.lab4.entitie.ClientePJ;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;

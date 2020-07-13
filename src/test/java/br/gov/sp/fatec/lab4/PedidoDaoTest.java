@@ -5,7 +5,7 @@ import br.gov.sp.fatec.lab4.dao.FornecedorDao;
 import br.gov.sp.fatec.lab4.dao.ItemDao;
 import br.gov.sp.fatec.lab4.dao.PedidoDao;
 import br.gov.sp.fatec.lab4.dao.PersistenceManager;
-import br.gov.sp.fatec.lab4.entities.*;
+import br.gov.sp.fatec.lab4.entitie.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
