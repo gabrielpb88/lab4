@@ -107,6 +107,8 @@ public class ClienteController extends HttpServlet {
             String location = req.getServerName() + ":" + req.getServerPort() + req.getContextPath()
                     + "/cliente?id=" + cliente.getId();
             resp.setHeader("Location", location);
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
             resp.getWriter().flush();
 
         }catch (Exception e){
