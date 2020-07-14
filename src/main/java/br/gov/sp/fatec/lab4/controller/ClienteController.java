@@ -80,8 +80,21 @@ public class ClienteController extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        Cliente cliente;
+        String tipoCliente = req.getParameter("tipo").toLowerCase();
+
+        switch (tipoCliente){
+            case "pf":
+                cliente = mapper.readValue(req.getReader(), ClientePF.class);
+                break;
+            case "pj":
+                cliente = mapper.readValue(req.getReader(), ClientePJ.class);
+                break;
+            default:
+                cliente = null;
+        }
+
         try{
-            ClientePF cliente = mapper.readValue(req.getReader(), ClientePF.class);
 
             if(cliente.getId() == null){
                 resp.setStatus(404);
