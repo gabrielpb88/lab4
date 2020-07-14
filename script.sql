@@ -76,7 +76,7 @@ CREATE TABLE usr_usuario(
 
 CREATE TABLE roles(
     role_name VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_roles PRIMARY KEY(nome)
+    CONSTRAINT pk_roles PRIMARY KEY(role_name)
 );
 
 CREATE TABLE usr_has_roles(
