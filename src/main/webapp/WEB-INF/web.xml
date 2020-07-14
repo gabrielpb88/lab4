@@ -20,26 +20,25 @@
     <servlet-class>br.gov.sp.fatec.lab4.controller.UsuarioController</servlet-class>
   </servlet>
 
-  <servlet-mapping>
-    <servlet-name>UsuarioController</servlet-name>
-    <url-pattern>/usuario</url-pattern>
-  </servlet-mapping>
-
-
   <servlet>
     <servlet-name>ClienteController</servlet-name>
     <servlet-class>br.gov.sp.fatec.lab4.controller.ClienteController</servlet-class>
   </servlet>
 
-  <servlet-mapping>
-    <servlet-name>ClienteController</servlet-name>
-    <url-pattern>/cliente</url-pattern>
-  </servlet-mapping>
-
   <servlet>
     <servlet-name>FornecedorController</servlet-name>
     <servlet-class>br.gov.sp.fatec.lab4.controller.FornecedorController</servlet-class>
   </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UsuarioController</servlet-name>
+    <url-pattern>/usuario</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ClienteController</servlet-name>
+    <url-pattern>/cliente</url-pattern>
+  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>FornecedorController</servlet-name>
