@@ -88,3 +88,6 @@ CREATE TABLE usr_has_roles(
     roles(role_name),
     CONSTRAINT pk_roles PRIMARY KEY(role_name, usuario)
 );
+
+INSERT INTO roles values("ADMIN");
+INSERT INTO roles values("DEFAULT");
